@@ -1,0 +1,13 @@
+{
+  "name": "Meenu Mathai",
+  "email": "123meenukomath@gmail.com",
+  "password": "demoPassword123",
+  "company": "Demo Company",
+  "website": "https://www.democompany.com",
+  "country": "US",
+  "city": "New York",
+  "address1": "123 Main St",
+  "address2": "Suite 456",
+  "state": "NY",
+  "zip": "10001"
+}
