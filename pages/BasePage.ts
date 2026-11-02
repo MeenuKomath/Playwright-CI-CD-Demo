@@ -4,7 +4,7 @@ export class BasePage {
 
 	readonly page: Page;
 	readonly inputFormSubmit: Locator;
-	readonly javaScriptAlert: Locator;
+	readonly iframeDemo: Locator;
 
 	
 	//constructor
@@ -12,15 +12,16 @@ export class BasePage {
 
 		this.page = page;
 		this.inputFormSubmit = page.getByRole('link', { name: 'Input Form Submit' });
-		this.javaScriptAlert = page.getByRole('link', { name: 'Javascript Alerts' });
+		this.iframeDemo = page.getByRole('link', { name: 'iFrame Demo' });
 	}
 
 	async clickInputForm() {
 
-        await this.inputFormSubmit.click();
+        await this.inputFormSubmit.click()
 	}
-	async clickjavaScriptAlertLink() {
+	async clickIFrameDemoLink() {
 
-		await this.javaScriptAlert.click();
+		await this.iframeDemo.click()
+		{ waitUntil: 'domcontentloaded' }			;
 	}
 }

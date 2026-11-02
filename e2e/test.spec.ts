@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { BasePage } from '../pages/BasePage';
 import { FormdemoPage } from '../pages/FormdemoPage';
-import { JavascriptAlertPage } from '../pages/JavascriptAlertPage';
+import { IFrameDemoPage } from '../pages/IFrameDemoPage';
 import data from '../test-data/test-data.json';
 
 
 test.describe("CI/CD Integration using GitHub Actions in Playwright", () => {
 
-    
+
     test('TC 1 :Form Submission ', async ({ page, baseURL }) => {
 
         const basePg = new BasePage(page);
@@ -31,20 +31,18 @@ test.describe("CI/CD Integration using GitHub Actions in Playwright", () => {
         await expect(msg).toContain('Thanks for contacting us, we will get back to you shortly.');
     })
 
-    test('TC 2 :Java Script Alerts ', async ({ page, baseURL }) => {
+
+    test('TC 2 : IFrame Demo ', async ({ page, baseURL }) => {
 
         const basePg = new BasePage(page);
-        const javascriptAlertPg = new JavascriptAlertPage(page);
+        const iframeDemoPg = new IFrameDemoPage(page);
         await page.goto(`${baseURL}`);
-        await basePg.clickjavaScriptAlertLink();
-        //await javascriptAlertPg.handleAlert();
-        //await javascriptAlertPg.clickAlert();
-
-
-
-
-
+        await basePg.clickIFrameDemoLink();
+        const textData = "Playwright is a modern, open-source automation library developed by Microsoft used for end-to-end testing and web scraping. It allows developers and QA engineers to control a web browser programmatically to simulate real human actions like clicking, typing, navigating pages, and checking layouts."
+        const editor = await iframeDemoPg.enterTextInEditor(textData);
+        await expect(editor).toBeVisible
+        await expect(editor).toHaveText(/Microsoft/);
     })
 
-    
 })
+    
